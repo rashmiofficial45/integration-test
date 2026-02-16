@@ -14,7 +14,7 @@ exports.app.post("/sum", async (req, res) => {
     const b = req.body.b;
     if (a > 1000000 || b > 1000000) {
         return res.status(422).json({
-            message: "Sorry we dont support big numbers"
+            message: "Sorry we dont support big numbers",
         });
     }
     const result = a + b;
@@ -23,8 +23,8 @@ exports.app.post("/sum", async (req, res) => {
             a: a,
             b: b,
             answer: result,
-            type: "ADD"
-        }
+            type: "ADD",
+        },
     });
     res.json({ answer: result, id: request.id });
 });
