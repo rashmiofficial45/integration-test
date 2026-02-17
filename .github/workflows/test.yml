@@ -10,6 +10,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: 1-integration-test
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -18,7 +22,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
@@ -27,12 +30,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        working-directory: 1-integration-test
 
       - name: Copy .env.example
         run: cp .env.example .env
-        working-directory: 1-integration-test
 
       - name: Run integration tests
         run: pnpm run test:integration
-        working-directory: 1-integration-test
