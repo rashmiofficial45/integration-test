@@ -17,5 +17,8 @@ done
 echo "🛠 Applying migrations..."
 pnpm prisma migrate deploy
 
+echo "🔄 Generating Prisma Client..."
+pnpm prisma generate
+
 echo "🧪 Running tests..."
 pnpm test
